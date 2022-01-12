@@ -6,8 +6,9 @@ def main():
     board = create_board()
     while not (winner(board) or draw(board)):
         display_board(board)
+        prompt_move(player, board)        
         player = next_player(player)
-        prompt_move(player, board)         
+         
     display_board(board)
     print("Good game. Thanks for playing!") 
 
@@ -48,9 +49,10 @@ def prompt_move(player, board):
     board[square - 1] = player
 
 def next_player(current):
-    if current == "" or current == "O":
-        return "X"
-    elif current == "X":
-        return "O"
+    if current == "" or current == "o":
+        return "x"
+    elif current == "x":
+        return "o"
+
 if __name__ == "__main__":
     main()
