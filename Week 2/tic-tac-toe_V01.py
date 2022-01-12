@@ -1,4 +1,6 @@
+"""
 
+"""
 def main():
     player1 = "X"
     player2 = "O"
@@ -13,11 +15,15 @@ def main():
             prompt_move(player, board)
             player2_ticket = 1
             display_board(board)
+            if (winner(board) or draw(board)) == True:
+                return
         if player2_ticket == 1:
             player = player2
             player2_ticket = 0
             prompt_move(player, board)
-            player1_ticket = 1            
+            player1_ticket = 1
+            if (winner(board) or draw(board)) == True:
+                return            
     display_board(board)
     print("Good game. Thanks for playing!") 
 
@@ -38,10 +44,20 @@ def display_board(board):
     print()
 
 def draw(board):
-    pass
+    for square in range(9):
+        if board[square] != "x" and board[square] != "o":
+            return False
+    return True 
 
 def winner(board):
-    pass
+    return (board[0] == board[1] == board[2] or
+            board[3] == board[4] == board[5] or
+            board[6] == board[7] == board[8] or
+            board[0] == board[3] == board[6] or
+            board[1] == board[4] == board[7] or
+            board[2] == board[5] == board[8] or
+            board[0] == board[4] == board[8] or
+            board[2] == board[4] == board[6])
 
 def prompt_move(player, board):
     square = int(input(f"{player}'s turn to choose a square (1-9): "))
