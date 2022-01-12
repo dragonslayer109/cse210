@@ -12,6 +12,7 @@ def main():
             player1_ticket = 0
             prompt_move(player, board)
             player2_ticket = 1
+            display_board(board)
         if player2_ticket == 1:
             player = player2
             player2_ticket = 0
@@ -36,14 +37,15 @@ def display_board(board):
     print(f"{board[6]}|{board[7]}|{board[8]}")
     print()
 
-def draw():
+def draw(board):
     pass
 
-def winner():
+def winner(board):
     pass
 
 def prompt_move(player, board):
-    pass
+    square = int(input(f"{player}'s turn to choose a square (1-9): "))
+    board[square - 1] = player
 
 if __name__ == "__main__":
     main()
