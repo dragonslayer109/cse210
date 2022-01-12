@@ -2,28 +2,12 @@
 
 """
 def main():
-    player1 = "X"
-    player2 = "O"
-    player1_ticket = 1
-    player2_ticket = 0
+    player = next_player("")
     board = create_board()
     while not (winner(board) or draw(board)):
         display_board(board)
-        if player1_ticket == 1:
-            player = player1
-            player1_ticket = 0
-            prompt_move(player, board)
-            player2_ticket = 1
-            display_board(board)
-            if (winner(board) or draw(board)) == True:
-                return
-        if player2_ticket == 1:
-            player = player2
-            player2_ticket = 0
-            prompt_move(player, board)
-            player1_ticket = 1
-            if (winner(board) or draw(board)) == True:
-                return            
+        player = next_player(player)
+        prompt_move(player, board)         
     display_board(board)
     print("Good game. Thanks for playing!") 
 
@@ -63,5 +47,10 @@ def prompt_move(player, board):
     square = int(input(f"{player}'s turn to choose a square (1-9): "))
     board[square - 1] = player
 
+def next_player(current):
+    if current == "" or current == "O":
+        return "X"
+    elif current == "X":
+        return "O"
 if __name__ == "__main__":
     main()
