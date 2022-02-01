@@ -1,5 +1,5 @@
 # TODO: Implement the Seeker class as follows...
-
+import random
 # 1) Add the class declaration. Use the following class comment.
 class Seeker:
     """The person looking for the Hider. 
@@ -17,6 +17,7 @@ class Seeker:
         Args:
             self (Seeker): An instance of Seeker.
         """
+        self._seeker = random.randint(1, 1000)
   
 # 3) Create the get_location(self) method. Use the following method comment.
     def get_location(self):
@@ -25,6 +26,7 @@ class Seeker:
         Returns:
             number: The current location,
         """
+        return self._seeker
         
 # 4) Create the move_location(self, location) method. Use the following method comment.
     def move_location(self, location):
@@ -34,3 +36,4 @@ class Seeker:
             self (Seeker): An instance of Seeker.
             location (int): The given location.
         """
+        self._seeker = location
